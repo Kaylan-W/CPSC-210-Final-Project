@@ -11,10 +11,13 @@ public class SubscriptionInterface {
     private Scanner readInput = new Scanner(System.in);
     ListOfSubscriptions newList = new ListOfSubscriptions();
 
+    // EFFECTS: runs the interface
     public SubscriptionInterface() throws ParseException {
         runInterface();
     }
 
+    // MODIFIES: this
+    // EFFECTS: processes user input
     private void runInterface() throws ParseException {
         int input;
         boolean loop = true;
@@ -40,6 +43,7 @@ public class SubscriptionInterface {
         System.out.println("Thank you for using SubHub!");
     }
 
+    // EFFECTS: outputs the list of application functionalities and executes methods based on user input
     private void displayMenu() {
         System.out.println("Welcome to SubHub!");
         System.out.println("\n\n\n**********\tManage Subscriptions\t**********");
@@ -53,6 +57,8 @@ public class SubscriptionInterface {
         System.out.println("\n\nExit application ..................... 0");
     }
 
+    // MODIFIES: this
+    // EFFECTS: Creates a new subscription and adds it to the list
     private void doAddSubs() throws ParseException {
         String storeService;
         Double storeCost;
@@ -73,6 +79,7 @@ public class SubscriptionInterface {
         newList.addSub(storeService, storeCost, storeRenewalType, storePDate);
     }
 
+    // EFFECTS: Outputs a list of all subscriptions in the list
     private void doViewList() {
         int size = newList.size();
         if (size == 0) {
@@ -85,12 +92,15 @@ public class SubscriptionInterface {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: Deletes a subscription from the list
     private void doCancelSub() {
         System.out.println("Enter the name of the subscription you wish to cancel: ");
         String cancelName = readInput.next();
         System.out.println(newList.cancelSub(cancelName));
     }
 
+    // EFFECTS: returns the renewal date of a given subscription
     private void doCheckRenewal() {
         System.out.println("Enter the name of the subscription to check renewal date for: ");
         String searchName = readInput.next();

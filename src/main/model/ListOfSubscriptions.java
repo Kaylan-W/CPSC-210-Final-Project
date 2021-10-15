@@ -18,11 +18,11 @@ public class ListOfSubscriptions {
         subsList.add(s);
     }
 
+    // EFFECTS: returns the size of the list
     public int size() {
         return subsList.size();
     }
 
-    // REQUIRES: subscription exists in the list
     // EFFECTS: returns information of a specified subscription in the list as a string
     public String getSubString(Integer i) {
         if (i < subsList.size()) {
@@ -33,6 +33,7 @@ public class ListOfSubscriptions {
         }
     }
 
+    // EFFECTS: returns the subscription found at a particular index in the list
     public Subscription getSub(Integer i) {
         Subscription s;
         if (i < subsList.size()) {

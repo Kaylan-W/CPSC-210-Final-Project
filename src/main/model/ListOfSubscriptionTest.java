@@ -49,15 +49,27 @@ public class ListOfSubscriptionTest {
     }
 
     @Test
-    void testGetSubExists() {
+    void testGetSubStringExists() {
         String returnString = testList.getSubString(1);
         assertEquals("NatGeo" + "\t\t  " + "260.0" + "\t\t\t" + "Yearly", returnString);
     }
 
     @Test
-    void testGetSubDoesNotExist() {
+    void testGetSubStringDoesNotExist() {
         String returnString = testList.getSubString(5);
         assertEquals("Subscription does not exist!", returnString);
+    }
+
+    @Test
+    void testGetSubExists() {
+        Subscription returnSub = testList.getSub(1);
+        assertEquals(sub2.getName(), returnSub.getName());
+    }
+
+    @Test
+    void testGetSubDoesNotExist() {
+        Subscription returnSub = testList.getSub(5);
+        assertEquals(null, returnSub);
     }
 
     @Test

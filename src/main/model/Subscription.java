@@ -29,7 +29,7 @@ public class Subscription {
             periodType = "Error!";
         }
         DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH);
-        LocalDate purchaseDate = LocalDate.parse(pdate, formatter1);
+        purchaseDate = LocalDate.parse(pdate, formatter1);
     }
 
     public String getName() {
@@ -47,7 +47,8 @@ public class Subscription {
     public LocalDate getPurchaseDate() {
         return purchaseDate;
     }
-
+    // EFFECTS: calculates the renewal date of a subscription by adding the time specified as the renewal period to
+    //          the purchase date.
     public LocalDate calculateRenewalDate() {
         LocalDate pdate = this.getPurchaseDate();
         LocalDate rdate = LocalDate.now();
@@ -62,8 +63,5 @@ public class Subscription {
         return rdate;
     }
 }
-    /*Adding number of Days to the given date
-    LocalDate date4 = LocalDate.of(2016, 10, 14).plusDays(9);
-	System.out.println("Adding days to the given date: "+date4); */
 
 
