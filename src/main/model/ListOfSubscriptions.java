@@ -8,7 +8,7 @@ public class ListOfSubscriptions {
     private List<Subscription> subsList;
 
     public ListOfSubscriptions() {
-        subsList = new ArrayList<Subscription>();
+        subsList = new ArrayList<>();
     }
 
     // EFFECTS: Creates a new subscription and adds it to the existing list of subscriptions.
@@ -17,16 +17,21 @@ public class ListOfSubscriptions {
         subsList.add(s);
     }
 
-    // REQUIRES: subscription exists in the list
-    // EFFECTS: returns information of a specified subscription in the list
-    public Subscription getSub(Integer i) {
-        return subsList.get(i);
+    public int size() {
+        return subsList.size();
     }
 
-    // EFFECTS: checks to see if a subscription exists in the current list of subscription
+    // REQUIRES: subscription exists in the list
+    // EFFECTS: returns information of a specified subscription in the list
+    public String getSub(Integer i) {
+        Subscription s = subsList.get(i);
+        return ("Name:" + s.getName() + " , ID:" + s.getId());
+    }
+
+   /* // EFFECTS: checks to see if a subscription exists in the current list of subscription
     public boolean containsSub(Subscription s) {
         return subsList.contains(s);
-    }
+    } */
 
     // REQUIRES: there are no duplicate subscriptions in the list
     //  EFFECTS: searches the list of subscriptions for a given subscription by its name, returns its index in
@@ -45,11 +50,13 @@ public class ListOfSubscriptions {
 
     // EFFECTS: removes a subscription from the list of subscription, or produces an error if the
     //          subscription does not exist
-    public String cancelSub(Subscription s) {
-        Integer i = searchForSub(s.getName());
+    // MODIFIES: ListOfSubscription, removes the subscription from the list
+    public String cancelSub(String cancelName) {
+        Integer i = searchForSub(cancelName);
         if (i == -1) {
             return "Error! Subscription does not exist!";
         } else {
+            Subscription s = subsList.get(i);
             subsList.remove(s);
             return "Subscription successfully removed!";
         }
