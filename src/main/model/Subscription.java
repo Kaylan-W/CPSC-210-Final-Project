@@ -1,11 +1,11 @@
 package model;
 
 public class Subscription {
-    private static int id;                   // subscription ID
+    private int id;                   // subscription ID
     private static int nextId = 1;    // increments ID
-    private static String name;              // the name of the service subscribed to
-    private static Double amount;            // the cost of the subscription per period
-    private static String periodType;           // how often the subscription renews
+    private String name;              // the name of the service subscribed to
+    private Double amount;            // the cost of the subscription per period
+    private String periodType;           // how often the subscription renews
 
 
     /* EFFECTS: The service for the subscription is set to name;
@@ -34,6 +34,10 @@ public class Subscription {
 
     public int getId() {
         return id;
+    }
+
+    public Double getCost() {
+        return amount;
     }
 
     public String getPeriodType() {

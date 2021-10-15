@@ -25,13 +25,20 @@ public class ListOfSubscriptions {
     // EFFECTS: returns information of a specified subscription in the list
     public String getSub(Integer i) {
         Subscription s = subsList.get(i);
-        return ("Name:" + s.getName() + " , ID:" + s.getId());
+        return ("Name:" + s.getName() + ", ID:" + s.getId() + ", Cost: $" + s.getCost() + ", Renewal period: "
+                + s.getPeriodType());
     }
 
-   /* // EFFECTS: checks to see if a subscription exists in the current list of subscription
+   // EFFECTS: checks to see if a subscription exists in the current list of subscription
     public boolean containsSub(Subscription s) {
-        return subsList.contains(s);
-    } */
+        String containsName = s.getName();
+        int searchResult = searchForSub(containsName);
+        if (searchResult != -1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     // REQUIRES: there are no duplicate subscriptions in the list
     //  EFFECTS: searches the list of subscriptions for a given subscription by its name, returns its index in
