@@ -75,7 +75,7 @@ public class SubscriptionInterface {
         if (size == 0) {
             System.out.println("There are no subscriptions!");
         } else {
-            System.out.println("NAME\t\t ID\t\t COST ($)\t RENEWAL PERIOD\t");
+            System.out.println("NAME\t\t COST ($)\t RENEWAL PERIOD\t");
             for (Integer ind = 0; ind < size; ind++) {
                 System.out.println(newList.getSub(ind));
             }

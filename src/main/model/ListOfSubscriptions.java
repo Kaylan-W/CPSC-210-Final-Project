@@ -24,8 +24,12 @@ public class ListOfSubscriptions {
     // REQUIRES: subscription exists in the list
     // EFFECTS: returns information of a specified subscription in the list
     public String getSub(Integer i) {
-        Subscription s = subsList.get(i);
-        return (s.getName() + "\t\t  " + s.getId() + "\t\t   " + s.getCost() + "\t\t\t" + s.getPeriodType());
+        if (i < subsList.size()) {
+            Subscription s = subsList.get(i);
+            return (s.getName() + "\t\t  " + s.getCost() + "\t\t\t" + s.getPeriodType());
+        } else {
+            return ("Subscription does not exist!");
+        }
     }
 
    // EFFECTS: checks to see if a subscription exists in the current list of subscription

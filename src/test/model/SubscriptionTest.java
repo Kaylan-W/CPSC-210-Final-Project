@@ -17,7 +17,7 @@ class SubscriptionTest {
     @Test
     void testCreateSubscription() {
         assertEquals("Netflix", test.getName());
-        assertTrue(test.getId() > 0);
+        assertEquals(500.0, test.getCost());
         assertEquals("Monthly", test.getPeriodType());
     }
 
@@ -25,7 +25,6 @@ class SubscriptionTest {
     void testCreateSubscriptionInvalidPeriod() {
         Subscription huluSubscription = new Subscription("Hulu", 100.0, 4);
         assertEquals("Hulu", huluSubscription.getName());
-        assertTrue(huluSubscription.getId() > 0);
         assertEquals("Error!", huluSubscription.getPeriodType());
     }
 
