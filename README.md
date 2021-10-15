@@ -33,7 +33,7 @@ free trials or unwanted products **ever** again.
 
 1. As a user, I want to add a new subscription to a list of my subscriptions.
 2. As a user, I want to view a list of all my subscriptions. 
-3. As a user, I want to be notified 3 days before a subscription on my list is set to renew.
+3. As a user, I want to find out when my subscription will renew.
 4. As a user, I want to be able to cancel or remove a subscription from my list. 
  
 

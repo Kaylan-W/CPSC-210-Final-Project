@@ -1,16 +1,22 @@
 package model;
 
+
+import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+
 public class Subscription {
     private String name;              // the name of the service subscribed to
     private Double amount;            // the cost of the subscription per period
     private String periodType;           // how often the subscription renews
-
+    private LocalDate purchaseDate;
 
     /* EFFECTS: The service for the subscription is set to name;
      *          Each subscription has a unique ID;
      *          The purchase date and renewal date are each represented as 3 individual integers,
      *          one for day, one for month, and one for year. */
-    public Subscription(String service, Double cost, Integer renewalType) {
+    public Subscription(String service, Double cost, Integer renewalType, String pdate) throws ParseException {
         name = service;
         amount = cost;
         if (renewalType == 1) {
@@ -22,7 +28,8 @@ public class Subscription {
         } else {
             periodType = "Error!";
         }
-
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH);
+        LocalDate purchaseDate = LocalDate.parse(pdate, formatter1);
     }
 
     public String getName() {
@@ -37,7 +44,26 @@ public class Subscription {
         return periodType;
     }
 
-}
+    public LocalDate getPurchaseDate() {
+        return purchaseDate;
+    }
 
+    public LocalDate calculateRenewalDate() {
+        LocalDate pdate = this.getPurchaseDate();
+        LocalDate rdate = LocalDate.now();
+        String renewalType = this.getPeriodType();
+        if (renewalType == "Weekly") {
+            rdate = pdate.plusWeeks(1);
+        } else if (renewalType == "Monthly") {
+            rdate = pdate.plusMonths(1);
+        } else {
+            rdate = pdate.plusYears(1);
+        }
+        return rdate;
+    }
+}
+    /*Adding number of Days to the given date
+    LocalDate date4 = LocalDate.of(2016, 10, 14).plusDays(9);
+	System.out.println("Adding days to the given date: "+date4); */
 
 

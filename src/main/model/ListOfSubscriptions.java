@@ -1,5 +1,6 @@
 package model;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,8 +13,8 @@ public class ListOfSubscriptions {
     }
 
     // EFFECTS: Creates a new subscription and adds it to the existing list of subscriptions.
-    public void addSub(String service, Double cost, Integer renewalType) {
-        Subscription s = new Subscription(service, cost, renewalType);
+    public void addSub(String service, Double cost, Integer renewalType, String pdate) throws ParseException {
+        Subscription s = new Subscription(service, cost, renewalType, pdate);
         subsList.add(s);
     }
 
@@ -22,13 +23,23 @@ public class ListOfSubscriptions {
     }
 
     // REQUIRES: subscription exists in the list
-    // EFFECTS: returns information of a specified subscription in the list
-    public String getSub(Integer i) {
+    // EFFECTS: returns information of a specified subscription in the list as a string
+    public String getSubString(Integer i) {
         if (i < subsList.size()) {
             Subscription s = subsList.get(i);
-            return (s.getName() + "\t\t  " + s.getCost() + "\t\t\t" + s.getPeriodType());
+            return (s.getName() + "\t\t" + s.getCost() + "\t\t\t" + s.getPeriodType() + "\t\t\t" + s.getPurchaseDate());
         } else {
             return ("Subscription does not exist!");
+        }
+    }
+
+    public Subscription getSub(Integer i) {
+        Subscription s;
+        if (i < subsList.size()) {
+            s = subsList.get(i);
+            return s;
+        } else {
+            return null;
         }
     }
 

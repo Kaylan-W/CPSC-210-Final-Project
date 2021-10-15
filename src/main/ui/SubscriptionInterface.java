@@ -1,19 +1,21 @@
 package ui;
 
+import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.Scanner;
-import model.Subscription;
 import model.ListOfSubscriptions;
+import model.Subscription;
 
 // Console Application for subscription manager
 public class SubscriptionInterface {
     private Scanner readInput = new Scanner(System.in);
     ListOfSubscriptions newList = new ListOfSubscriptions();
 
-    public SubscriptionInterface() {
+    public SubscriptionInterface() throws ParseException {
         runInterface();
     }
 
-    private void runInterface() {
+    private void runInterface() throws ParseException {
         int input;
         boolean loop = true;
 
@@ -31,8 +33,6 @@ public class SubscriptionInterface {
                 doCancelSub();
             } else if (input == 4) {
                 doCheckRenewal(); // not yet coded
-            } else if (input == 5) {
-                doAddNotification(); // not yet coded
             } else {
                 System.out.println("Invalid selection!");
             }
@@ -53,10 +53,11 @@ public class SubscriptionInterface {
         System.out.println("\n\nExit application ..................... 0");
     }
 
-    private void doAddSubs() {
+    private void doAddSubs() throws ParseException {
         String storeService;
         Double storeCost;
         Integer storeRenewalType;
+        String storePDate;
         System.out.println("Name of service: ");
         storeService = readInput.next();
         System.out.println("\nHow often does the service need to be renewed?");
@@ -67,7 +68,9 @@ public class SubscriptionInterface {
         storeRenewalType = readInput.nextInt();
         System.out.println("\nCost of service per period: $");
         storeCost = readInput.nextDouble();
-        newList.addSub(storeService, storeCost, storeRenewalType);
+        System.out.println("\nPurchase Date (dd-mm-yyyy) :");
+        storePDate = readInput.next();
+        newList.addSub(storeService, storeCost, storeRenewalType, storePDate);
     }
 
     private void doViewList() {
@@ -75,9 +78,9 @@ public class SubscriptionInterface {
         if (size == 0) {
             System.out.println("There are no subscriptions!");
         } else {
-            System.out.println("NAME\t\t COST ($)\t RENEWAL PERIOD\t");
+            System.out.println("NAME\t\t COST ($)\t RENEWAL PERIOD\t\t\t PURCHASE DATE");
             for (Integer ind = 0; ind < size; ind++) {
-                System.out.println(newList.getSub(ind));
+                System.out.println(newList.getSubString(ind));
             }
         }
     }
@@ -89,10 +92,15 @@ public class SubscriptionInterface {
     }
 
     private void doCheckRenewal() {
-        System.out.println("write check renewal function! and change return type of this one!!");
-    }
-
-    private void doAddNotification() {
-        System.out.println("write add notif function! and change return type of this one!!");
+        System.out.println("Enter the name of the subscription to check renewal date for: ");
+        String searchName = readInput.next();
+        Integer searchIndex = newList.searchForIndex(searchName);
+        if (searchIndex == -1) {
+            System.out.println("Subscription does not exist!");
+        } else {
+            Subscription s = newList.getSub(searchIndex);
+            LocalDate rdate = s.calculateRenewalDate();
+            System.out.println("This subscription will be renewed on " + rdate);
+        }
     }
 }
