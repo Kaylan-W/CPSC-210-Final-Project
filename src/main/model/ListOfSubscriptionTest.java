@@ -31,7 +31,7 @@ public class ListOfSubscriptionTest {
     @Test
     void testSearchForSubFirstElement() {
         testList.addSub("Disney", 50.0, 2);
-        assertEquals(0, testList.searchForSub("Disney"));
+        assertEquals(0, testList.searchForIndex("Disney"));
     }
 
 
@@ -40,7 +40,7 @@ public class ListOfSubscriptionTest {
         testList.addSub("Disney", 50.0, 2);
         testList.addSub("NatGeo", 260.0, 3);
         testList.addSub("Symbolab", 2.00, 1);
-        assertEquals(1, testList.searchForSub("NatGeo"));
+        assertEquals(1, testList.searchForIndex("NatGeo"));
     }
 
     @Test
@@ -48,7 +48,7 @@ public class ListOfSubscriptionTest {
         testList.addSub("Disney", 50.0, 2);
         testList.addSub("NatGeo", 260.0, 3);
         testList.addSub("Symbolab", 2.00, 1);
-        assertEquals(-1, testList.searchForSub("Hulu"));
+        assertEquals(-1, testList.searchForIndex("Hulu"));
     }
 
     @Test

@@ -25,14 +25,13 @@ public class ListOfSubscriptions {
     // EFFECTS: returns information of a specified subscription in the list
     public String getSub(Integer i) {
         Subscription s = subsList.get(i);
-        return ("Name:" + s.getName() + ", ID:" + s.getId() + ", Cost: $" + s.getCost() + ", Renewal period: "
-                + s.getPeriodType());
+        return (s.getName() + "\t\t  " + s.getId() + "\t\t   " + s.getCost() + "\t\t\t" + s.getPeriodType());
     }
 
    // EFFECTS: checks to see if a subscription exists in the current list of subscription
     public boolean containsSub(Subscription s) {
         String containsName = s.getName();
-        int searchResult = searchForSub(containsName);
+        int searchResult = searchForIndex(containsName);
         if (searchResult != -1) {
             return true;
         } else {
@@ -43,7 +42,7 @@ public class ListOfSubscriptions {
     // REQUIRES: there are no duplicate subscriptions in the list
     //  EFFECTS: searches the list of subscriptions for a given subscription by its name, returns its index in
     //          the list if found, or -1 if it does not exist.
-    public Integer searchForSub(String searchName) {
+    public Integer searchForIndex(String searchName) {
         int index = -1;
         for (int i = 0; i < subsList.size(); i++) {
             Subscription s = subsList.get(i);
@@ -59,7 +58,7 @@ public class ListOfSubscriptions {
     //          subscription does not exist
     // MODIFIES: ListOfSubscription, removes the subscription from the list
     public String cancelSub(String cancelName) {
-        Integer i = searchForSub(cancelName);
+        Integer i = searchForIndex(cancelName);
         if (i == -1) {
             return "Error! Subscription does not exist!";
         } else {

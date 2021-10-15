@@ -7,6 +7,7 @@ import model.ListOfSubscriptions;
 // Console Application for subscription manager
 public class SubscriptionInterface {
     private Scanner readInput = new Scanner(System.in);
+    ListOfSubscriptions newList = new ListOfSubscriptions();
 
     public SubscriptionInterface() {
         runInterface();
@@ -23,15 +24,15 @@ public class SubscriptionInterface {
             if (input == 0) {
                 loop = false;
             } else if (input == 1) {
-                System.out.println("Do addSubs");
+                doAddSubs();
             } else if (input == 2) {
-                System.out.println("Do viewList");
+                doViewList();
             } else if (input == 3) {
-                System.out.println("Do cancelSub");
+                doCancelSub();
             } else if (input == 4) {
-                System.out.println("Do checkRenewal");
+                doCheckRenewal(); // not yet coded
             } else if (input == 5) {
-                System.out.println("Do addNotif");
+                doAddNotification(); // not yet coded
             } else {
                 System.out.println("Invalid selection!");
             }
@@ -50,5 +51,48 @@ public class SubscriptionInterface {
         System.out.println("\nAdd renewal reminder ................. 5");
         System.out.println("\n\n\n**********\tApplication Controls \t**********");
         System.out.println("\n\nExit application ..................... 0");
+    }
+
+    private void doAddSubs() {
+        String storeService;
+        Double storeCost;
+        Integer storeRenewalType;
+        System.out.println("Name of service: ");
+        storeService = readInput.next();
+        System.out.println("\nHow often does the service need to be renewed?");
+        System.out.println("Enter 1 for Weekly");
+        System.out.println("Enter 2 for Monthly");
+        System.out.println("Enter 3 for Yearly");
+        System.out.println("\nSelection: ");
+        storeRenewalType = readInput.nextInt();
+        System.out.println("\nCost of service per period: $");
+        storeCost = readInput.nextDouble();
+        newList.addSub(storeService, storeCost, storeRenewalType);
+    }
+
+    private void doViewList() {
+        int size = newList.size();
+        if (size == 0) {
+            System.out.println("There are no subscriptions!");
+        } else {
+            System.out.println("NAME\t\t ID\t\t COST ($)\t RENEWAL PERIOD\t");
+            for (Integer ind = 0; ind < size; ind++) {
+                System.out.println(newList.getSub(ind));
+            }
+        }
+    }
+
+    private void doCancelSub() {
+        System.out.println("Enter the name of the subscription you wish to cancel: ");
+        String cancelName = readInput.next();
+        System.out.println(newList.cancelSub(cancelName));
+    }
+
+    private void doCheckRenewal() {
+        System.out.println("write check renewal function! and change return type of this one!!");
+    }
+
+    private void doAddNotification() {
+        System.out.println("write add notif function! and change return type of this one!!");
     }
 }
