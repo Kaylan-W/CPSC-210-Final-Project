@@ -30,11 +30,28 @@ class SubscriptionTest {
     }
 
     @Test
-    void testCalculateRenewalDate() {
+    void testCalculateRenewalDateWeekly() {
+        Subscription testWeekly = new Subscription("Disney", 250.0, 1, "10-01-2021");
+        LocalDate returnDate = testWeekly.calculateRenewalDate();
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH);
+        LocalDate testDate = LocalDate.parse("17-01-2021", formatter1);
+        assertTrue(returnDate.isEqual(testDate));
+    }
+
+    @Test
+    void testCalculateRenewalDateMonthly() {
         LocalDate returnDate = test.calculateRenewalDate();
         DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH);
         LocalDate testDate = LocalDate.parse("12-05-2021", formatter1);
-        assertTrue (returnDate.isEqual(testDate));  
+        assertTrue (returnDate.isEqual(testDate));
     }
 
+    @Test
+    void testCalculateRenewalDateYearly() {
+        Subscription testYearly = new Subscription("Apple TV", 100.0, 3, "01-04-2021");
+        LocalDate returnDate = testYearly.calculateRenewalDate();
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH);
+        LocalDate testDate = LocalDate.parse("01-04-2022", formatter1);
+        assertTrue(returnDate.isEqual(testDate));
+    }
 }

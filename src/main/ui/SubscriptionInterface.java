@@ -44,14 +44,14 @@ public class SubscriptionInterface {
 
     // EFFECTS: outputs the list of application functionalities and executes methods based on user input
     private void displayMenu() {
-        System.out.println("Welcome to SubHub!");
-        System.out.println("\n\n\n**********\tManage Subscriptions\t**********");
+        System.out.println("\nWelcome to SubHub!");
+        System.out.println("\n\n**********\tManage Subscriptions\t**********");
         System.out.println("\n\nAdd a new subscription ............... 1");
         System.out.println("\nView existing subscriptions .......... 2");
         System.out.println("\nCancel a subscription ................ 3");
-        System.out.println("\n\n\n**********\tSubscription Renewals\t**********");
+        System.out.println("\n\n**********\tSubscription Renewals\t**********");
         System.out.println("\n\nCheck renewal dates .................. 4");
-        System.out.println("\n\n\n**********\tApplication Controls \t**********");
+        System.out.println("\n\n**********\tApplication Controls \t**********");
         System.out.println("\n\nExit application ..................... 0");
     }
 
