@@ -52,7 +52,6 @@ public class SubscriptionInterface {
         System.out.println("\nCancel a subscription ................ 3");
         System.out.println("\n\n\n**********\tSubscription Renewals\t**********");
         System.out.println("\n\nCheck renewal dates .................. 4");
-        System.out.println("\nAdd renewal reminder ................. 5");
         System.out.println("\n\n\n**********\tApplication Controls \t**********");
         System.out.println("\n\nExit application ..................... 0");
     }
@@ -61,8 +60,8 @@ public class SubscriptionInterface {
     // EFFECTS: Creates a new subscription and adds it to the list
     private void doAddSubs() throws ParseException {
         String storeService;
-        Double storeCost;
-        Integer storeRenewalType;
+        double storeCost;
+        int storeRenewalType;
         String storePDate;
         System.out.println("Name of service: ");
         storeService = readInput.next();
@@ -86,7 +85,7 @@ public class SubscriptionInterface {
             System.out.println("There are no subscriptions!");
         } else {
             System.out.println("NAME\t\t COST ($)\t RENEWAL PERIOD\t\t\t PURCHASE DATE");
-            for (Integer ind = 0; ind < size; ind++) {
+            for (int ind = 0; ind < size; ind++) {
                 System.out.println(newList.getSubString(ind));
             }
         }
@@ -109,8 +108,8 @@ public class SubscriptionInterface {
             System.out.println("Subscription does not exist!");
         } else {
             Subscription s = newList.getSub(searchIndex);
-            LocalDate rdate = s.calculateRenewalDate();
-            System.out.println("This subscription will be renewed on " + rdate);
+            LocalDate date = s.calculateRenewalDate();
+            System.out.println("This subscription will be renewed on " + date);
         }
     }
 }

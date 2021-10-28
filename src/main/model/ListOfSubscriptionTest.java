@@ -51,7 +51,7 @@ public class ListOfSubscriptionTest {
     @Test
     void testGetSubStringExists() {
         String returnString = testList.getSubString(1);
-        assertEquals("NatGeo" + "\t\t  " + "260.0" + "\t\t\t" + "Yearly", returnString);
+        assertEquals("NatGeo" + "\t\t" + "260.0" + "\t\t\t" + "Yearly" + "\t\t\t2021-02-12", returnString);
     }
 
     @Test
@@ -69,7 +69,7 @@ public class ListOfSubscriptionTest {
     @Test
     void testGetSubDoesNotExist() {
         Subscription returnSub = testList.getSub(5);
-        assertEquals(null, returnSub);
+        assertNull(returnSub);
     }
 
     @Test
