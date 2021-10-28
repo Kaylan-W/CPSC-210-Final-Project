@@ -2,9 +2,6 @@ package model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.text.ParseException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ListOfSubscriptionTest {
@@ -14,12 +11,9 @@ public class ListOfSubscriptionTest {
     Subscription sub3 = new Subscription("Symbolab", 2.00, 1, "18-09-2021");
     Subscription sub4 = new Subscription("Hulu", 10.00, 2, "21-11-2021");
 
-    public ListOfSubscriptionTest() throws ParseException {
-    }
-
 
     @BeforeEach
-    public void runBefore() throws ParseException {
+    public void runBefore() {
         testList = new ListOfSubscriptions();
         testList.addSub("Disney", 50.0, 2, "10-01-2021");
         testList.addSub("NatGeo", 260.0, 3, "12-02-2021");
@@ -27,7 +21,7 @@ public class ListOfSubscriptionTest {
     }
 
     @Test
-    void testAddSub() throws ParseException {
+    void testAddSub() {
         testList.addSub("Hulu", 10.00, 2, "21-11-2021");
         assertEquals(4, testList.size());
         assertTrue(testList.containsSub(sub1));
@@ -43,7 +37,7 @@ public class ListOfSubscriptionTest {
     }
 
     @Test
-    void testSearchForSubFirstElement() throws ParseException {
+    void testSearchForSubFirstElement() {
         testList.addSub("Steam", 150.0, 2, "28-06-2021");
         assertEquals(3, testList.searchForIndex("Steam"));
     }
@@ -74,11 +68,13 @@ public class ListOfSubscriptionTest {
 
     @Test
     void testSearchForSubNotFirstElement() {
+
         assertEquals(1, testList.searchForIndex("NatGeo"));
     }
 
     @Test
     void testSearchForSubDoesNotExist() {
+
         assertEquals(-1, testList.searchForIndex("Hulu"));
     }
 

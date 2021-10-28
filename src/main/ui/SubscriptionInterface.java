@@ -1,6 +1,5 @@
 package ui;
 
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.Scanner;
 import model.ListOfSubscriptions;
@@ -12,13 +11,13 @@ public class SubscriptionInterface {
     ListOfSubscriptions newList = new ListOfSubscriptions();
 
     // EFFECTS: runs the interface
-    public SubscriptionInterface() throws ParseException {
+    public SubscriptionInterface() {
         runInterface();
     }
 
     // MODIFIES: this
     // EFFECTS: processes user input
-    private void runInterface() throws ParseException {
+    private void runInterface() {
         int input;
         boolean loop = true;
 
@@ -58,7 +57,7 @@ public class SubscriptionInterface {
 
     // MODIFIES: this
     // EFFECTS: Creates a new subscription and adds it to the list
-    private void doAddSubs() throws ParseException {
+    private void doAddSubs() {
         String storeService;
         double storeCost;
         int storeRenewalType;

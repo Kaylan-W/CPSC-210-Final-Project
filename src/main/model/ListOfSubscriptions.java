@@ -1,6 +1,5 @@
 package model;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +12,7 @@ public class ListOfSubscriptions {
     }
 
     // EFFECTS: Creates a new subscription and adds it to the existing list of subscriptions.
-    public void addSub(String service, Double cost, Integer renewalType, String pdate) throws ParseException {
+    public void addSub(String service, Double cost, Integer renewalType, String pdate) {
         Subscription s = new Subscription(service, cost, renewalType, pdate);
         subsList.add(s);
     }
@@ -48,11 +47,7 @@ public class ListOfSubscriptions {
     public boolean containsSub(Subscription s) {
         String containsName = s.getName();
         int searchResult = searchForIndex(containsName);
-        if (searchResult != -1) {
-            return true;
-        } else {
-            return false;
-        }
+        return (searchResult != -1);
     }
 
     // REQUIRES: there are no duplicate subscriptions in the list
