@@ -1,7 +1,6 @@
 package model;
 
 
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -16,7 +15,7 @@ public class Subscription {
      *          Each subscription has a unique ID;
      *          The purchase date and renewal date are each represented as 3 individual integers,
      *          one for day, one for month, and one for year. */
-    public Subscription(String service, Double cost, Integer renewalType, String pdate) throws ParseException {
+    public Subscription(String service, Double cost, Integer renewalType, String pdate) {
         name = service;
         amount = cost;
         if (renewalType == 1) {
@@ -47,15 +46,16 @@ public class Subscription {
     public LocalDate getPurchaseDate() {
         return purchaseDate;
     }
+
     // EFFECTS: calculates the renewal date of a subscription by adding the time specified as the renewal period to
     //          the purchase date.
     public LocalDate calculateRenewalDate() {
         LocalDate pdate = this.getPurchaseDate();
-        LocalDate rdate = LocalDate.now();
+        LocalDate rdate;
         String renewalType = this.getPeriodType();
-        if (renewalType == "Weekly") {
+        if (renewalType.equals("Weekly")) {
             rdate = pdate.plusWeeks(1);
-        } else if (renewalType == "Monthly") {
+        } else if (renewalType.equals("Monthly")) {
             rdate = pdate.plusMonths(1);
         } else {
             rdate = pdate.plusYears(1);
