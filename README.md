@@ -27,7 +27,7 @@ or only wanted to use for a short period of time. SubHub is here to make sure yo
 free trials or unwanted products **ever** again.
 
   
-
+   
 ### User Stories
 
 1. As a user, I want to add a new subscription to a list of my subscriptions.
