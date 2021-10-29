@@ -4,16 +4,18 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
+// Represents a subscription with a name, cost, renewal period and purchase date.
 public class Subscription {
-    private String name;              // the name of the service subscribed to
-    private Double amount;            // the cost of the subscription per period
-    private String periodType;           // how often the subscription renews
-    private LocalDate purchaseDate;
+    private final String name;              // the name of the service subscribed to
+    private final Double amount;            // the cost of the subscription per period
+    private final String periodType;           // how often the subscription renews
+    private final LocalDate purchaseDate;
 
-    /* EFFECTS: The service for the subscription is set to name;
-     *          Each subscription has a unique ID;
-     *          The purchase date and renewal date are each represented as 3 individual integers,
-     *          one for day, one for month, and one for year. */
+
+    /* REQUIRES: name has a non-zero length
+     * EFFECTS: The service name for the subscription is set to name; The cost per period is saved as double;
+     *          The renewal period is represented as an integer then interpreted by the code to be either
+     *          weekly, monthly or yearly; The purchase date is converted to be in the format dd-mm-yyyy. */
     public Subscription(String service, Double cost, Integer renewalType, String pdate) {
         name = service;
         amount = cost;

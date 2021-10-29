@@ -19,7 +19,6 @@ SubHub lets you:
 - Keep track of your subscriptions in one place 
 - View your current subscriptions
 - Check when they renew
-- Get notifications before they renew 
 - Manage and cancel your subscriptions 
 
  
@@ -27,7 +26,7 @@ I made this application because I too, have overpaid for services I forgot I reg
 or only wanted to use for a short period of time. SubHub is here to make sure you never get charged for those 
 free trials or unwanted products **ever** again.
 
-
+  
 
 ### User Stories
 
@@ -35,6 +34,9 @@ free trials or unwanted products **ever** again.
 2. As a user, I want to view a list of all my subscriptions. 
 3. As a user, I want to find out when my subscription will renew.
 4. As a user, I want to be able to cancel or remove a subscription from my list. 
- 
+5. As a user, I want to be able to save my subscription information to file while 
+using the application and when quitting it.
+6. As a user, I want to have the option to reload data from the file when I start the 
+application.
 
  

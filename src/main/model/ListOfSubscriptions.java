@@ -3,10 +3,12 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+// Represents the list of all subscriptions
 public class ListOfSubscriptions {
 
-    private List<Subscription> subsList;
+    private final List<Subscription> subsList;
 
+    // EFFECTS: creates an array list to store all subscriptions.
     public ListOfSubscriptions() {
         subsList = new ArrayList<>();
     }
@@ -65,9 +67,9 @@ public class ListOfSubscriptions {
         return index;
     }
 
+    // MODIFIES: this
     // EFFECTS: removes a subscription from the list of subscription, or produces an error if the
     //          subscription does not exist
-    // MODIFIES: ListOfSubscription, removes the subscription from the list
     public String cancelSub(String cancelName) {
         Integer i = searchForIndex(cancelName);
         if (i == -1) {
