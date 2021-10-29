@@ -50,7 +50,7 @@ public class JsonReader {
     private void addParsedList(ListOfSubscriptions los, JSONArray item) {
         for (Object json : item) {
             JSONObject nextSub = (JSONObject) json;
-            addParsedSub(los, nextSub); 
+            addParsedSub(los, nextSub);
         }
     }
 
@@ -63,7 +63,6 @@ public class JsonReader {
         String purchaseDate = nextSub.getString("purchase");
         Subscription s = new Subscription(name, amount, periodType, purchaseDate);
         los.addSub(s);
-        //los.addSub(name, amount, periodType, purchaseDate);
     }
 }
 
