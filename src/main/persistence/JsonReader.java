@@ -34,12 +34,12 @@ public class JsonReader {
     // EFFECTS: Returns the list of subscriptions read from file
     public ListOfSubscriptions readList() throws IOException {
         String line = readFile(input);
-        JSONObject item = new JSONObject(line);
+        JSONArray item = new JSONArray(line);
         return parseLOS(item);
     }
 
     // EFFECTS: Returns JSON object from file as a list of subscriptions
-    private ListOfSubscriptions parseLOS(JSONObject item) {
+    private ListOfSubscriptions parseLOS(JSONArray item) {
         ListOfSubscriptions los = new ListOfSubscriptions();
         addParsedList(los, item);
         return los;
@@ -47,11 +47,10 @@ public class JsonReader {
 
     // MODIFIES: los
     // EFFECTS: adds all parsed subscriptions to the list of subscription
-    private void addParsedList(ListOfSubscriptions los, JSONObject item) {
-        JSONArray tempArray = item.getJSONArray("list");
-        for (Object json : tempArray) {
+    private void addParsedList(ListOfSubscriptions los, JSONArray item) {
+        for (Object json : item) {
             JSONObject nextSub = (JSONObject) json;
-            addParsedSub(los, nextSub);
+            addParsedSub(los, nextSub); 
         }
     }
 

@@ -1,0 +1,20 @@
+[
+  {
+    "period": 2,
+    "cost": 50,
+    "service": "Disney",
+    "purchase": "2021-01-10"
+  },
+  {
+    "period": 3,
+    "cost": 260,
+    "service": "NatGeo",
+    "purchase": "2021-02-12"
+  },
+  {
+    "period": 1,
+    "cost": 2,
+    "service": "Netflix",
+    "purchase": "2021-09-18"
+  }
+]

@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class JsonReaderTest {
+public class JsonReaderTest extends ConvertTest {
 
     @Test
     void testReaderNoFile() {
@@ -58,9 +58,13 @@ public class JsonReaderTest {
         try {
             ListOfSubscriptions los = scan.readList();
             assertEquals(3, los.size());
-            assertEquals("Netflix", (los.getSub(0)).getName());
-            assertEquals("Disney+", (los.getSub(1)).getName());
-            assertEquals("Amazon", (los.getSub(2)).getName());
+            checkConversion("Disney", 50, 2, los.getSub(0));
+            checkConversion("NatGeo", 260, 3, los.getSub(1));
+            checkConversion("Netflix", 2, 1, los.getSub(2));
+
+//            assertEquals("Disney", (los.getSub(0)).getName());
+//            assertEquals("NatGeo", (los.getSub(1)).getName());
+//            assertEquals("Netflix", (los.getSub(2)).getName());
         } catch (IOException e) {
             fail("Unable to read from file!!");
         }
