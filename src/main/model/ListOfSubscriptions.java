@@ -94,17 +94,17 @@ public class ListOfSubscriptions implements Convert {
 
     // EFFECTS: Returns a list of subscriptions in JSON format
     @Override
-    public JSONObject jsonConvertor() {
-        JSONObject json = new JSONObject();
-        json.put("list", losToJson());
-        return json;
+    public JSONArray jsonConvertor() {
+        JSONArray jsonA = new JSONArray();
+        jsonA = this.losToJson();
+        return jsonA;
     }
 
     // EFFECTS: Returns a list of subscriptions as a JSON array format
     public JSONArray losToJson() {
         JSONArray array = new JSONArray();
         for (Subscription s : subsList) {
-            array.put(s.jsonConvertor());
+            array.put(s.jsonSubConvertor());
         }
         return array;
     }

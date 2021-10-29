@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 
 // Represents a subscription with a name, cost, renewal period and purchase date.
-public class Subscription implements Convert {
+public class Subscription {
     private final String name;              // the name of the service subscribed to
     private final Double amount;            // the cost of the subscription per period
     private final String periodType;           // how often the subscription renews
@@ -72,8 +72,7 @@ public class Subscription implements Convert {
     }
 
     // EFFECTS: Returns a subscription in JSON format
-    @Override
-    public JSONObject jsonConvertor() {
+    public JSONObject jsonSubConvertor() {
         JSONObject json = new JSONObject();
         json.put("service",name);
         json.put("cost",amount);

@@ -9,7 +9,7 @@ public class ConvertTest {
     protected void checkConversion(String name, double cost, int periodType, Subscription s) {
         assertEquals(name, s.getName());
         assertEquals(cost, s.getCost());
-        assertEquals(periodType, s.renewalStringToInt()); 
+        assertEquals(periodType, s.renewalStringToInt());
     }
 
 }
