@@ -28,7 +28,16 @@ public class ListOfSubscriptionTest {
         assertTrue(testList.containsSub(sub2));
         assertTrue(testList.containsSub(sub3));
         assertTrue(testList.containsSub(sub4));
+    }
 
+    @Test
+    void testAddSubBySub()  {
+        ListOfSubscriptions los = new ListOfSubscriptions();
+        los.addSub(sub1);
+        los.addSub(sub2);
+        assertEquals(2, los.size());
+        assertTrue(los.containsSub(sub1));
+        assertTrue(los.containsSub(sub2));
     }
 
     @Test

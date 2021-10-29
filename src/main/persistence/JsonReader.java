@@ -1,6 +1,7 @@
 package persistence;
 
 import model.ListOfSubscriptions;
+import model.Subscription;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -10,6 +11,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+// This class references code from the repo "JsonSerializationDemo"
+// Link: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+// Represents a reader that converts JSON data in a file to a list of subscription
 public class JsonReader {
     private String input;
 
@@ -58,7 +62,9 @@ public class JsonReader {
         double amount = nextSub.getDouble("cost");
         int periodType = nextSub.getInt("period");
         String purchaseDate = nextSub.getString("purchase");
-        los.addSub(name, amount, periodType, purchaseDate);
+        Subscription s = new Subscription(name, amount, periodType, purchaseDate);
+        los.addSub(s);
+        //los.addSub(name, amount, periodType, purchaseDate);
     }
 }
 

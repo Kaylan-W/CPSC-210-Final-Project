@@ -17,9 +17,16 @@ public class ListOfSubscriptions implements Convert {
         subsList = new ArrayList<>();
     }
 
-    // EFFECTS: Creates a new subscription and adds it to the existing list of subscriptions.
+    // MODIFIES: this
+    // EFFECTS: Creates a new subscription given the data and adds it to the existing list of subscriptions.
     public void addSub(String service, Double cost, Integer renewalType, String pdate) {
         Subscription s = new Subscription(service, cost, renewalType, pdate);
+        subsList.add(s);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Adds a given subscription to the existing list of subscriptions.
+    public void addSub(Subscription s) {
         subsList.add(s);
     }
 
@@ -94,7 +101,7 @@ public class ListOfSubscriptions implements Convert {
     }
 
     // EFFECTS: Returns a list of subscriptions as a JSON array format
-    private JSONArray losToJson() {
+    public JSONArray losToJson() {
         JSONArray array = new JSONArray();
         for (Subscription s : subsList) {
             array.put(s.jsonConvertor());
