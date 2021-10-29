@@ -1,10 +1,14 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Convert;
+
 import java.util.ArrayList;
 import java.util.List;
 
 // Represents the list of all subscriptions
-public class ListOfSubscriptions {
+public class ListOfSubscriptions implements Convert {
 
     private final List<Subscription> subsList;
 
@@ -81,5 +85,21 @@ public class ListOfSubscriptions {
         }
     }
 
+    // EFFECTS: Returns a list of subscriptions in JSON format
+    @Override
+    public JSONObject jsonConvertor() {
+        JSONObject json = new JSONObject();
+        json.put("list", losToJson());
+        return json;
+    }
+
+    // EFFECTS: Returns a list of subscriptions as a JSON array format
+    private JSONArray losToJson() {
+        JSONArray array = new JSONArray();
+        for (Subscription s : subsList) {
+            array.put(s.jsonConvertor());
+        }
+        return array;
+    }
 }
 

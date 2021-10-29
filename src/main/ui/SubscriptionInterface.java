@@ -68,7 +68,7 @@ public class SubscriptionInterface {
         System.out.println("Enter 1 for Weekly");
         System.out.println("Enter 2 for Monthly");
         System.out.println("Enter 3 for Yearly");
-        System.out.println("\nSelection: ");
+        System.out.println("\nSelection: "); // ERROR CATCHING TO ENSURE CORRECT PERIOD!!
         storeRenewalType = readInput.nextInt();
         System.out.println("\nCost of service per period: $");
         storeCost = readInput.nextDouble();

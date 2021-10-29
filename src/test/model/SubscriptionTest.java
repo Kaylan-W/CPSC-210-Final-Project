@@ -23,13 +23,6 @@ class SubscriptionTest {
     }
 
     @Test
-    void testCreateSubscriptionInvalidPeriod() {
-        Subscription huluSubscription = new Subscription("Hulu", 100.0, 4, "04-04-2021");
-        assertEquals("Hulu", huluSubscription.getName());
-        assertEquals("Error!", huluSubscription.getPeriodType());
-    }
-
-    @Test
     void testCalculateRenewalDateWeekly() {
         Subscription testWeekly = new Subscription("Disney", 250.0, 1, "10-01-2021");
         LocalDate returnDate = testWeekly.calculateRenewalDate();
