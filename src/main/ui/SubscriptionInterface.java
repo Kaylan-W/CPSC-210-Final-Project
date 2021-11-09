@@ -79,7 +79,7 @@ public class SubscriptionInterface {
         storeRenewalType = getRenewalType();
         System.out.println("\nCost of service per period: $");
         storeCost = readInput.nextDouble();
-        System.out.println("\nPurchase Date (dd-mm-yyyy) :");
+        System.out.println("\nPurchase Date (yyyy-mm-dd) :");
         storePDate = readInput.next();
         newList.addSub(storeService, storeCost, storeRenewalType, storePDate);
     }
@@ -156,6 +156,7 @@ public class SubscriptionInterface {
     private void doOpenList() {
         try {
             newList = input.readList();
+            System.out.println("List loaded from file");
         } catch (IOException i) {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }

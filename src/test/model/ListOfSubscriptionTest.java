@@ -6,23 +6,23 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ListOfSubscriptionTest {
     private ListOfSubscriptions testList;
-    Subscription sub1 = new Subscription("Disney", 50.0, 2, "10-01-2021");
-    Subscription sub2 = new Subscription("NatGeo", 260.0, 3, "12-02-2021");
-    Subscription sub3 = new Subscription("Symbolab", 2.00, 1, "18-09-2021");
-    Subscription sub4 = new Subscription("Hulu", 10.00, 2, "21-11-2021");
+    Subscription sub1 = new Subscription("Disney", 50.0, 2, "2021-01-10");
+    Subscription sub2 = new Subscription("NatGeo", 260.0, 3, "2021-02-12");
+    Subscription sub3 = new Subscription("Symbolab", 2.00, 1, "2021-09-18");
+    Subscription sub4 = new Subscription("Hulu", 10.00, 2, "2021-11-21");
 
 
     @BeforeEach
     public void runBefore() {
         testList = new ListOfSubscriptions();
-        testList.addSub("Disney", 50.0, 2, "10-01-2021");
-        testList.addSub("NatGeo", 260.0, 3, "12-02-2021");
-        testList.addSub("Symbolab", 2.00, 1, "18-09-2021");
+        testList.addSub(sub1);
+        testList.addSub(sub2);
+        testList.addSub(sub3);
     }
 
     @Test
     void testAddSub() {
-        testList.addSub("Hulu", 10.00, 2, "21-11-2021");
+        testList.addSub("Hulu", 10.00, 2, "2021-11-21");
         assertEquals(4, testList.size());
         assertTrue(testList.containsSub(sub1));
         assertTrue(testList.containsSub(sub2));
@@ -47,7 +47,7 @@ public class ListOfSubscriptionTest {
 
     @Test
     void testSearchForSubFirstElement() {
-        testList.addSub("Steam", 150.0, 2, "28-06-2021");
+        testList.addSub("Steam", 150.0, 2, "2021-06-28");
         assertEquals(3, testList.searchForIndex("Steam"));
     }
 

@@ -12,8 +12,14 @@ class SubscriptionTest {
 
     @BeforeEach
     void runBefore() {
-        test = new Subscription("Netflix", 500.0, 2, "12-04-2021");
+        test = new Subscription("Netflix", 500.0, 2, "2021-04-12");
     }
+
+    private LocalDate testParse(String s) {
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH);
+        return LocalDate.parse(s, formatter1);
+    }
+
 
     @Test
     void testCreateSubscription() {
@@ -24,27 +30,24 @@ class SubscriptionTest {
 
     @Test
     void testCalculateRenewalDateWeekly() {
-        Subscription testWeekly = new Subscription("Disney", 250.0, 1, "10-01-2021");
+        Subscription testWeekly = new Subscription("Disney", 250.0, 1, "2021-01-10");
         LocalDate returnDate = testWeekly.calculateRenewalDate();
-        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH);
-        LocalDate testDate = LocalDate.parse("17-01-2021", formatter1);
+        LocalDate testDate = testParse("2021-01-17");
         assertTrue(returnDate.isEqual(testDate));
     }
 
     @Test
     void testCalculateRenewalDateMonthly() {
         LocalDate returnDate = test.calculateRenewalDate();
-        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH);
-        LocalDate testDate = LocalDate.parse("12-05-2021", formatter1);
+        LocalDate testDate = testParse("2021-05-12");
         assertTrue (returnDate.isEqual(testDate));
     }
 
     @Test
     void testCalculateRenewalDateYearly() {
-        Subscription testYearly = new Subscription("Apple TV", 100.0, 3, "01-04-2021");
+        Subscription testYearly = new Subscription("Apple TV", 100.0, 3, "2021-04-01");
         LocalDate returnDate = testYearly.calculateRenewalDate();
-        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH);
-        LocalDate testDate = LocalDate.parse("01-04-2022", formatter1);
+        LocalDate testDate = testParse("2022-04-01");
         assertTrue(returnDate.isEqual(testDate));
     }
 }
