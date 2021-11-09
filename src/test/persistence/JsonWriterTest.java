@@ -63,9 +63,9 @@ public class JsonWriterTest {
     void testWriterPopulatedList() {
         try {
             ListOfSubscriptions los = new ListOfSubscriptions();
-            Subscription sub1 = new Subscription("Disney", 50.0, 2, "10-01-2021");
-            Subscription sub2 = new Subscription("NatGeo", 260.0, 3, "12-02-2021");
-            Subscription sub3 = new Subscription("Netflix", 2.00, 1, "18-09-2021");
+            Subscription sub1 = new Subscription("Disney", 50.0, 2, "2021-01-10");
+            Subscription sub2 = new Subscription("NatGeo", 260.0, 3, "2021-02-12");
+            Subscription sub3 = new Subscription("Netflix", 2.00, 1, "2021-09-18");
             los.addSub(sub1);
             los.addSub(sub2);
             los.addSub(sub3);
@@ -88,9 +88,9 @@ public class JsonWriterTest {
     void testWriterPopulatedListExceptionThrown() {
         try {
             ListOfSubscriptions los = new ListOfSubscriptions();
-            Subscription sub1 = new Subscription("Disney", 50.0, 2, "10-01-2021");
-            Subscription sub2 = new Subscription("NatGeo", 260.0, 3, "12-02-2021");
-            Subscription sub3 = new Subscription("Netflix", 2.00, 1, "18-09-2021");
+            Subscription sub1 = new Subscription("Disney", 50.0, 2, "2021-01-10");
+            Subscription sub2 = new Subscription("NatGeo", 260.0, 3, "2021-02-12");
+            Subscription sub3 = new Subscription("Netflix", 2.00, 1, "2021-09-18");
             los.addSub(sub1);
             los.addSub(sub2);
             los.addSub(sub3);

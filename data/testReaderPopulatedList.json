@@ -3,18 +3,18 @@
     "period": 2,
     "cost": 50,
     "service": "Disney",
-    "purchase": "10-01-2021"
+    "purchase": "2021-01-10"
   },
   {
     "period": 3,
     "cost": 260,
     "service": "NatGeo",
-    "purchase": "12-02-2021"
+    "purchase": "2021-02-12"
   },
   {
     "period": 1,
     "cost": 2,
     "service": "Netflix",
-    "purchase": "18-09-2021"
+    "purchase": "2021-09-12"
   }
 ]

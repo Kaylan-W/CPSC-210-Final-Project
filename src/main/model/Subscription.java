@@ -1,6 +1,9 @@
 package model;
 
 import persistence.Convert;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -33,9 +36,9 @@ public class Subscription {
         purchaseDate = formatString(pdate);
     }
 
-    // EFFECTS: converts a given string to LocalDate format dd-mm-yyyy
+    // EFFECTS: converts a given string to LocalDate format yyyy-MM-dd
     public LocalDate formatString(String pdate) {
-        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH);
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH);
         return LocalDate.parse(pdate, formatter1);
     }
 
