@@ -38,7 +38,7 @@ public class JsonReader {
         return parseLOS(item);
     }
 
-    // EFFECTS: Returns JSON object from file as a list of subscriptions
+    // EFFECTS: Returns JSON array from file as a list of subscriptions
     private ListOfSubscriptions parseLOS(JSONArray item) {
         ListOfSubscriptions los = new ListOfSubscriptions();
         addParsedList(los, item);

@@ -85,7 +85,7 @@ public class JsonWriterTest {
     }
 
     @Test
-    void testWriterPopulatedListExceptionTrown() {
+    void testWriterPopulatedListExceptionThrown() {
         try {
             ListOfSubscriptions los = new ListOfSubscriptions();
             Subscription sub1 = new Subscription("Disney", 50.0, 2, "10-01-2021");
