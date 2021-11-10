@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Represents the list of all subscriptions
-public class ListOfSubscriptions implements Convert {
+public class ListOfSubscriptions {
 
     private final List<Subscription> subsList;
 
@@ -89,14 +89,6 @@ public class ListOfSubscriptions implements Convert {
             subsList.remove(s);
             return "Subscription successfully removed!";
         }
-    }
-
-    // EFFECTS: Returns a list of subscriptions in JSON format
-    @Override
-    public JSONArray jsonConvertor() {
-        JSONArray jsonA = new JSONArray();
-        jsonA = this.losToJson();
-        return jsonA;
     }
 
     // EFFECTS: Returns a list of subscriptions as a JSON array format
