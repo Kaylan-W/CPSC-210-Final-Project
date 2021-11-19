@@ -92,17 +92,44 @@ class SubHubUI extends JFrame {
         @Override
         public void actionPerformed(ActionEvent evt) {
             System.out.println("Added!");
-
-//            String sensorLoc = JOptionPane.showInputDialog(null,
-//                    "Sensor location?",
-//                    "Enter subscription information",
-//                    JOptionPane.QUESTION_MESSAGE);
-//            try {
-//                if (sensorLoc != null) {
-//                    Sensor s = new Sensor(sensorLoc, ac);
-//                    desktop.add(new SensorUI(s, AlarmControllerUI.this));
-//                }
+            JTextField service = new JTextField();
+            JTextField cost = new JTextField();
+            JTextField date = new JTextField();
+            JTextField period = new JTextField();
+            addSubPanel(service, cost, date, period);
         }
+    }
+
+    public void addSubPanel(JTextField service, JTextField cost, JTextField date, JTextField period) {
+        Object[] message = {
+                "Service Name:", service,
+                "Cost: $", cost,
+                "Purchase Date (yyyy-mm-dd) :", date,
+                "Renewal Period:", period
+        };
+
+        int addStatus = JOptionPane.showConfirmDialog(null,
+                message,"Enter subscription information", JOptionPane.OK_CANCEL_OPTION);
+
+        String name = service.getText();
+        Double amount = Double.parseDouble(cost.getText());
+        String pdate = date.getText();
+        int rtype = Integer.parseInt(period.getText());
+
+        if (addStatus == JOptionPane.OK_OPTION) {
+            if (emptyField(name, amount, pdate, rtype)) {
+                JOptionPane.showMessageDialog(null,
+                        "Missing Field!", "Error!", JOptionPane.ERROR_MESSAGE);
+            } else {
+                newList.addSub(name, amount, rtype, pdate);
+                JOptionPane.showMessageDialog(null,
+                        "Subscription Added", "Success!", JOptionPane.PLAIN_MESSAGE);
+            }
+        }
+    }
+
+    public boolean emptyField(String name, Double amount, String pdate, int rtype) {
+        return (name.isEmpty() || amount.equals(null) || pdate.isEmpty() || rtype > 3 || rtype < 1);
     }
 
     // EFFECTS: Outputs a table of all subscriptions in the list
@@ -114,7 +141,17 @@ class SubHubUI extends JFrame {
         @Override
         public void actionPerformed(ActionEvent evt) {
             System.out.println("Viewed!");
+            int size = newList.size();
+            if (size == 0) {
+                System.out.println("There are no subscriptions!");
+            } else {
+                System.out.println("NAME\t\t COST ($)\t RENEWAL PERIOD\t\t\t PURCHASE DATE");
+                for (int ind = 0; ind < size; ind++) {
+                    System.out.println(newList.getSubString(ind));
+                }
+            }
         }
+
     }
 
     // EFFECTS: allows user to save current subscriptions to the file.
