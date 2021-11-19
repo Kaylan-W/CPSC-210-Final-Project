@@ -11,7 +11,7 @@ import java.time.LocalDate;
 public class ViewTable extends JPanel {
     // EFFECTS: table constructor
     public ViewTable(ListOfSubscriptions los) {
-        String col[] = {"Service", "Cost", "Renewal Period", "Purchase Date"};
+        String[] col = {"Service", "Cost", "Renewal Period", "Purchase Date"};
         DefaultTableModel tableModel = new DefaultTableModel(col, 0);
         JTable table = new JTable(tableModel);
 
