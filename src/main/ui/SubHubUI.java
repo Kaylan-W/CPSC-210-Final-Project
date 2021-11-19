@@ -66,6 +66,7 @@ class SubHubUI extends JFrame {
         window.dispose();
     }
 
+    // MODIFIES: this
     // EFFECTS: Creates buttons in main interface
     private void makeMenuButtons() {
         JPanel buttonPanel = new JPanel();
@@ -75,6 +76,7 @@ class SubHubUI extends JFrame {
         mainPanel.add(buttonPanel, BorderLayout.CENTER);
     }
 
+    // MODIFIES: this
     // EFFECTS: creates and adds a menu bar to the panel.
     private void addMenuBar() {
         JMenuBar menuBar = new JMenuBar();
@@ -86,6 +88,7 @@ class SubHubUI extends JFrame {
         setJMenuBar(menuBar);
     }
 
+    // MODIFIES: this
     /**
      * EFFECTS: Adds an item with given handler to the given menu
      * @param theMenu  menu to which new item is added
@@ -117,6 +120,7 @@ class SubHubUI extends JFrame {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: Creates a popup panel prompting the user to enter new subscription information
     public void addSubPanel(JTextField service, JTextField cost, JTextField date, JTextField period) {
         Object[] message = {
@@ -151,6 +155,7 @@ class SubHubUI extends JFrame {
         return (name.isEmpty() || amount.equals(null) || pdate.isEmpty() || rtype > 3 || rtype < 1);
     }
 
+    // MODIFIES: this
     // EFFECTS: Outputs a table of all subscriptions in the list
     private class ViewSubAction extends AbstractAction {
         ViewSubAction() {
@@ -162,6 +167,7 @@ class SubHubUI extends JFrame {
             createViewTable();
         }
     }
+
 
     // EFFECTS: Creates a non-modifiable table displaying all the current subscriptions in a new panel
     public void createViewTable() {
