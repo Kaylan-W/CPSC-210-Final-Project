@@ -140,18 +140,34 @@ class SubHubUI extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent evt) {
-            System.out.println("Viewed!");
-            int size = newList.size();
-            if (size == 0) {
-                System.out.println("There are no subscriptions!");
-            } else {
-                System.out.println("NAME\t\t COST ($)\t RENEWAL PERIOD\t\t\t PURCHASE DATE");
-                for (int ind = 0; ind < size; ind++) {
-                    System.out.println(newList.getSubString(ind));
-                }
-            }
-        }
+//            int size = newList.size();
+//            if (size == 0) {
+//                System.out.println("There are no subscriptions!");
+//            } else {
+//                System.out.println("NAME\t\t COST ($)\t RENEWAL PERIOD\t\t\t PURCHASE DATE");
+//                for (int ind = 0; ind < size; ind++) {
+//                    System.out.println(newList.getSubString(ind));
+//                }
+//            }
+            createViewTable();
 
+        }
+    }
+
+    // EFFECTS: Creates a non-modifiable table displaying all the current subscriptions in a new panel
+    public void createViewTable() {
+        //Create and set up the window.
+        JFrame frame = new JFrame("View Subscriptions");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        //Create and set up the content pane.
+        ViewTable newContentPane = new ViewTable();
+        newContentPane.setOpaque(true); //content panes must be opaque
+        frame.setContentPane(newContentPane);
+
+        //Display the window.
+        frame.pack();
+        frame.setVisible(true);
     }
 
     // EFFECTS: allows user to save current subscriptions to the file.
