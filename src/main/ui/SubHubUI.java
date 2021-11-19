@@ -29,6 +29,7 @@ class SubHubUI extends JFrame {
 
     //EFFECTS: Constructor creates a new window with all required buttons and menus.
     public SubHubUI() {
+        displaySplash();
         desktop = new JDesktopPane();
         desktop.addMouseListener(new DesktopFocusAction());
         mainPanel = new JInternalFrame("Subscription manager", true, false, true, false);
@@ -48,6 +49,22 @@ class SubHubUI extends JFrame {
         setVisible(true);
     }
 
+    // EFFECTS: Displays a splash screen of SubHub logo for 5 seconds upon opening app
+    private void displaySplash() {
+        JWindow window = new JWindow();
+        window.getContentPane().add(
+                new JLabel("", new ImageIcon("./data/LOGO.png"), SwingConstants.CENTER));
+        window.setBounds(230, 100, 800, 600);
+        window.setVisible(true);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        window.dispose();
+    }
+
+    // EFFECTS: Creates buttons in main interface
     private void makeMenuButtons() {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(2,2));
@@ -70,7 +87,7 @@ class SubHubUI extends JFrame {
     }
 
     /**
-     * Adds an item with given handler to the given menu
+     * EFFECTS: Adds an item with given handler to the given menu
      * @param theMenu  menu to which new item is added
      * @param action   handler for new menu item
      * @param accelerator    keystroke accelerator for this menu item
@@ -100,6 +117,7 @@ class SubHubUI extends JFrame {
         }
     }
 
+    // EFFECTS: Creates a pop up panel prompting the user to enter new subscription information
     public void addSubPanel(JTextField service, JTextField cost, JTextField date, JTextField period) {
         Object[] message = {
                 "Service Name:", service,
@@ -128,6 +146,7 @@ class SubHubUI extends JFrame {
         }
     }
 
+    // EFFECTS: Checks to see if any fields to create a subscription are left empty
     public boolean emptyField(String name, Double amount, String pdate, int rtype) {
         return (name.isEmpty() || amount.equals(null) || pdate.isEmpty() || rtype > 3 || rtype < 1);
     }
@@ -199,7 +218,7 @@ class SubHubUI extends JFrame {
     }
 
     /**
-     * Represents action to be taken when user clicks desktop
+     * EFFECTS: Represents action to be taken when user clicks desktop
      * to switch focus. (Needed for key handling.)
      */
     private class DesktopFocusAction extends MouseAdapter {
