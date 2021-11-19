@@ -9,9 +9,6 @@ import java.awt.*;
 import java.time.LocalDate;
 
 public class ViewTable extends JPanel {
-    DefaultTableModel tableModel;
-    ListOfSubscriptions newList = new ListOfSubscriptions();
-
     // EFFECTS: table constructor
     public ViewTable(ListOfSubscriptions los) {
         String col[] = {"Service", "Cost", "Renewal Period", "Purchase Date"};

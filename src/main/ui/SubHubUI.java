@@ -29,6 +29,8 @@ class SubHubUI extends JFrame {
 
     //EFFECTS: Constructor creates a new window with all required buttons and menus.
     public SubHubUI() {
+        output = new JsonWriter(JSON_STORE);
+        input = new JsonReader(JSON_STORE);
         displaySplash();
         desktop = new JDesktopPane();
         desktop.addMouseListener(new DesktopFocusAction());
@@ -70,8 +72,6 @@ class SubHubUI extends JFrame {
         buttonPanel.setLayout(new GridLayout(2,2));
         buttonPanel.add(new JButton(new AddSubAction()));
         buttonPanel.add(new JButton(new ViewSubAction()));
-        //buttonPanel.add(new JButton(new CancelAction())); //SECONDARY
-        //buttonPanel.add(new JButton(new RenewAction())); //SECONDARY
         mainPanel.add(buttonPanel, BorderLayout.CENTER);
     }
 
@@ -117,7 +117,7 @@ class SubHubUI extends JFrame {
         }
     }
 
-    // EFFECTS: Creates a pop up panel prompting the user to enter new subscription information
+    // EFFECTS: Creates a popup panel prompting the user to enter new subscription information
     public void addSubPanel(JTextField service, JTextField cost, JTextField date, JTextField period) {
         Object[] message = {
                 "Service Name:", service,
