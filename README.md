@@ -59,3 +59,18 @@ New subscription added to list!
 
 Fri Nov 26 08:04:50 PST 2021
 Subscription was removed from list!
+
+
+### Phase 4: Task 3
+
+One way the code can be refactored is to follow along with the Singleton Pattern. 
+- This would be applied to the ListOfSubscription class.
+- This would result in the code creating a single, globally accessible list of subscriptions
+which would reduce the duplication of declarations in other classes that utilize the list. 
+- As such, there would be reduced risk of incorrect references and ensure that all subscriptions get added to the same 
+list.
+
+Another refactoring can be applied to the subscription class, with how the Renewal Period field is handled.
+- When adding a new subscription, the Renewal Period would be presented in the form of
+3 radio buttons, each with a corresponding period type. 
+- This would reduce the likeliness of user error and eliminate the need for current guards against invalid numerical input that are currently in the code.

@@ -6,7 +6,6 @@ import java.util.Locale;
 
 import org.json.JSONObject;
 
-
 // Represents a subscription with a name, cost, renewal period and purchase date.
 public class Subscription {
     private final String name;              // the name of the service subscribed to

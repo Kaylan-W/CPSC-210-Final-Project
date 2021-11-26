@@ -1,9 +1,7 @@
 package model;
 
-
 import java.util.Calendar;
 import java.util.Date;
-
 
 // Represents a Subscription modification event.
 public class Event {

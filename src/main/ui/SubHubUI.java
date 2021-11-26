@@ -25,7 +25,6 @@ class SubHubUI extends JFrame {
     private JDesktopPane desktop;
     private JInternalFrame mainPanel;
     private static final String JSON_STORE = "./data/workroom.json";
-    private Scanner readInput = new Scanner(System.in);
     ListOfSubscriptions newList = new ListOfSubscriptions();
     private JsonWriter output;
     private JsonReader input;
@@ -168,7 +167,7 @@ class SubHubUI extends JFrame {
 
     // EFFECTS: Checks to see if any fields to create a subscription are left empty
     public boolean emptyField(String name, Double amount, String pdate, int rtype) {
-        return (name.isEmpty() || amount.equals(null) || pdate.isEmpty() || rtype > 3 || rtype < 1);
+        return (name.isEmpty() || pdate.isEmpty() || rtype > 3 || rtype < 1);
     }
 
     // MODIFIES: this
