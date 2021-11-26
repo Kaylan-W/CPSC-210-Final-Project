@@ -1,7 +1,6 @@
 package model;
 
 import org.json.JSONArray;
-import persistence.Convert;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,12 +20,15 @@ public class ListOfSubscriptions {
     public void addSub(String service, Double cost, Integer renewalType, String pdate) {
         Subscription s = new Subscription(service, cost, renewalType, pdate);
         subsList.add(s);
+        EventLog.getInstance().logEvent(new Event("New subscription added to list!"));
+
     }
 
     // MODIFIES: this
     // EFFECTS: Adds a given subscription to the existing list of subscriptions.
     public void addSub(Subscription s) {
         subsList.add(s);
+        EventLog.getInstance().logEvent(new Event("New subscription added to list!"));
     }
 
     // EFFECTS: returns the size of the list
@@ -89,6 +91,7 @@ public class ListOfSubscriptions {
             subsList.remove(s);
             return "Subscription successfully removed!";
         }
+        EventLog.getInstance().logEvent(new Event("Subscription was removed from list!"));
     }
 
     // EFFECTS: Returns a list of subscriptions as a JSON array format

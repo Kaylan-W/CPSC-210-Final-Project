@@ -68,6 +68,7 @@ public class Subscription {
             rdate = pdate.plusYears(1);
         }
         return rdate;
+        EventLog.getInstance().logEvent(new Event("Renewal date calculated."));
     }
 
     // EFFECTS: Returns a subscription in JSON format

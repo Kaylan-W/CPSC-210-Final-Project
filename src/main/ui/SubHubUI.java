@@ -12,6 +12,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import javax.swing.*;
 
 // This class references code from the repo "AlarmSystem"
@@ -47,8 +50,25 @@ class SubHubUI extends JFrame {
         mainPanel.pack();
         mainPanel.setVisible(true);
         desktop.add(mainPanel);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setVisible(true);
+//        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+//        setVisible(true);
+
+//        desktop.addWindowListener(new java.awt.event.WindowAdapter() {
+//            @Override
+//            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+//                setVisible(true);
+//            }
+//        });
+
+//        WindowClosingDemo frame = new WindowClosingDemo();
+//        frame.addWindowListener(new WindowAdapter() {
+//            @Override
+//            public void windowClosing(WindowEvent e) {
+//                System.out.println("WindowClosingDemo.windowClosing");
+//                System.exit(0);
+//            }
+//        });
+
     }
 
     // EFFECTS: Displays a splash screen of SubHub logo for 5 seconds upon opening app
