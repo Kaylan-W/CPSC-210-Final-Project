@@ -89,9 +89,9 @@ public class ListOfSubscriptions {
         } else {
             Subscription s = subsList.get(i);
             subsList.remove(s);
+            EventLog.getInstance().logEvent(new Event("Subscription was removed from list!"));
             return "Subscription successfully removed!";
         }
-        EventLog.getInstance().logEvent(new Event("Subscription was removed from list!"));
     }
 
     // EFFECTS: Returns a list of subscriptions as a JSON array format

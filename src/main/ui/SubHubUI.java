@@ -1,6 +1,8 @@
 package ui;
 
 import model.ListOfSubscriptions;
+import model.Event;
+import model.EventLog;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -11,8 +13,6 @@ import java.awt.event.MouseEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
-
-import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.*;
@@ -50,25 +50,22 @@ class SubHubUI extends JFrame {
         mainPanel.pack();
         mainPanel.setVisible(true);
         desktop.add(mainPanel);
-//        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-//        setVisible(true);
+        setVisible(true);
+    }
 
-//        desktop.addWindowListener(new java.awt.event.WindowAdapter() {
-//            @Override
-//            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-//                setVisible(true);
-//            }
-//        });
+    protected void processWindowEvent(WindowEvent e) {
+        super.processWindowEvent(e);
+        if (e.getID() == WindowEvent.WINDOW_CLOSING) {
+            System.out.println("Event Log:");
+            printLog(EventLog.getInstance());
+            System.exit(0);
+        }
+    }
 
-//        WindowClosingDemo frame = new WindowClosingDemo();
-//        frame.addWindowListener(new WindowAdapter() {
-//            @Override
-//            public void windowClosing(WindowEvent e) {
-//                System.out.println("WindowClosingDemo.windowClosing");
-//                System.exit(0);
-//            }
-//        });
-
+    public void printLog(EventLog el) {
+        for (Event next : el) {
+            System.out.println(next.toString() + "\n\n");
+        }
     }
 
     // EFFECTS: Displays a splash screen of SubHub logo for 5 seconds upon opening app
@@ -131,7 +128,6 @@ class SubHubUI extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent evt) {
-            System.out.println("Added!");
             JTextField service = new JTextField();
             JTextField cost = new JTextField();
             JTextField date = new JTextField();
@@ -219,7 +215,6 @@ class SubHubUI extends JFrame {
                 output.open();
                 output.write(newList);
                 output.close();
-                System.out.println("Saved subscriptions!");
             } catch (FileNotFoundException e) {
                 System.out.println("Unable to read from file!!");
             }
@@ -236,7 +231,6 @@ class SubHubUI extends JFrame {
         public void actionPerformed(ActionEvent evt) {
             try {
                 newList = input.readList();
-                System.out.println("List loaded from file");
             } catch (IOException i) {
                 System.out.println("Unable to read from file: " + JSON_STORE);
             }

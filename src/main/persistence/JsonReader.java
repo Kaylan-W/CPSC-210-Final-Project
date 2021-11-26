@@ -1,6 +1,7 @@
 package persistence;
 
 import model.Event;
+import model.EventLog;
 import model.ListOfSubscriptions;
 import model.Subscription;
 import org.json.JSONArray;
@@ -36,8 +37,8 @@ public class JsonReader {
     public ListOfSubscriptions readList() throws IOException {
         String line = readFile(input);
         JSONArray item = new JSONArray(line);
+        EventLog.getInstance().logEvent(new Event("Subscriptions from file added to list!"));
         return parseLOS(item);
-        EventLog.getInstance().logEvent(new Event("Info from file added to list!"));
     }
 
     // EFFECTS: Returns JSON array from file as a list of subscriptions

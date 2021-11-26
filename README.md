@@ -39,4 +39,23 @@ using the application and when quitting it.
 6. As a user, I want to have the option to reload data from the file when I start the 
 application.
 
- 
+
+### Phase 4: Task 2
+
+The EventLog class created a record of the events that occur during runtime, 
+and outputs them to the console. A sample of this EventLog is included below.
+
+
+Event Log:
+
+Fri Nov 26 08:04:05 PST 2021
+Subscriptions from file added to list!
+
+Fri Nov 26 08:04:20 PST 2021
+New subscription added to list!
+
+Fri Nov 26 08:04:37 PST 2021
+New subscription added to list!
+
+Fri Nov 26 08:04:50 PST 2021
+Subscription was removed from list!
