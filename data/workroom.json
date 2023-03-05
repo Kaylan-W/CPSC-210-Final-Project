@@ -1,0 +1,26 @@
+[
+          {
+                    "period": 1,
+                    "cost": 12.11,
+                    "service": "net",
+                    "purchase": "2021-02-02"
+          },
+          {
+                    "period": 2,
+                    "cost": 50,
+                    "service": "amazon",
+                    "purchase": "2021-03-21"
+          },
+          {
+                    "period": 3,
+                    "cost": 12,
+                    "service": "Hulu",
+                    "purchase": "2020-03-09"
+          },
+          {
+                    "period": 1,
+                    "cost": 10,
+                    "service": "Hulu",
+                    "purchase": "2021-01-23"
+          }
+]
